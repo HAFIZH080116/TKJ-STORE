@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+    <div class="container">
+        <a class="navbar-brand text-primary" href="{{ route('user.home') }}">
+            <i class="bi bi-shop me-1"></i>{{ config('app.name') }}
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#userNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="userNavbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('user.home') ? 'active fw-semibold' : '' }}"
+                       href="{{ route('user.home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('user.produk.*') ? 'active fw-semibold' : '' }}"
+                       href="{{ route('user.produk.index') }}">Produk</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('user.keranjang.*') ? 'active fw-semibold' : '' }}"
+                       href="{{ route('user.keranjang.index') }}">
+                        Keranjang
+                        @if (($cartQty ?? 0) > 0)
+                            <span class="badge text-bg-danger">{{ $cartQty }}</span>
+                        @endif
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('user.pesanan.*') ? 'active fw-semibold' : '' }}"
+                       href="{{ route('user.pesanan.index') }}">Riwayat Pesanan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1">Profil</a>
+                </li>
+            </ul>
+            <form method="POST" action="{{ route('logout') }}" class="d-flex">
+                @csrf
+                <button type="submit" class="btn btn-outline-danger btn-sm">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
