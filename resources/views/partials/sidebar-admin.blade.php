@@ -14,9 +14,7 @@
            class="nav-link {{ request()->routeIs('admin.produk.*') ? 'active' : '' }}">
             <i class="bi bi-box-seam me-2"></i> Kelola Produk
         </a>
-        <a href="#" class="nav-link disabled" tabindex="-1" title="Tahap berikutnya">
-            <i class="bi bi-people me-2"></i> Kelola User
-        </a>
+
         <a href="{{ route('admin.pesanan.index') }}"
            class="nav-link {{ request()->routeIs('admin.pesanan.*') ? 'active' : '' }}">
             <i class="bi bi-receipt me-2"></i> Kelola Pesanan

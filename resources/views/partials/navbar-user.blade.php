@@ -29,9 +29,7 @@
                     <a class="nav-link {{ request()->routeIs('user.pesanan.*') ? 'active fw-semibold' : '' }}"
                        href="{{ route('user.pesanan.index') }}">Riwayat Pesanan</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1">Profil</a>
-                </li>
+
             </ul>
             <form method="POST" action="{{ route('logout') }}" class="d-flex">
                 @csrf

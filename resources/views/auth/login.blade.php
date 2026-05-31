@@ -33,9 +33,13 @@
                         <input type="password" name="password" id="password"
                                class="form-control @error('password') is-invalid @enderror" required>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">
+                    <button type="submit" class="btn btn-primary w-100 mb-3">
                         <i class="bi bi-box-arrow-in-right me-1"></i> Login
                     </button>
+                    <div class="text-center">
+                        <span class="text-muted small">Belum punya akun?</span>
+                        <a href="{{ route('register') }}" class="small text-decoration-none fw-semibold">Daftar di sini</a>
+                    </div>
                 </form>
             </div>
         </div>

@@ -72,6 +72,8 @@ class CheckoutService
 
             $this->cart->clear();
 
+            \App\Models\ActivityLog::record("Melakukan checkout pesanan #{$transaksi->id_transaksi} dengan total Rp " . number_format($transaksi->total_pembayaran, 0, ',', '.'));
+
             return ['transaksi' => $transaksi];
         } catch (\RuntimeException $e) {
             return ['error' => $e->getMessage()];

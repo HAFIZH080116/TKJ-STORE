@@ -20,6 +20,8 @@ Route::get('/', function () {
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
 });
 
 Route::middleware('auth')->group(function () {
@@ -35,8 +37,27 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
 });
 
-Route::middleware(['auth', 'role:developer'])->group(function () {
-    Route::get('/developer', [DeveloperDashboardController::class, 'index'])->name('developer.dashboard');
+Route::middleware(['auth', 'role:developer'])->prefix('developer')->name('developer.')->group(function () {
+    Route::get('/', [DeveloperDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/monitoring', [DeveloperDashboardController::class, 'monitoring'])->name('monitoring');
+    
+    // Kelola Versi
+    Route::get('/versi', [DeveloperDashboardController::class, 'versiIndex'])->name('versi.index');
+    Route::post('/versi', [DeveloperDashboardController::class, 'versiStore'])->name('versi.store');
+    Route::delete('/versi/{id}', [DeveloperDashboardController::class, 'versiDestroy'])->name('versi.destroy');
+    
+    // Bug Report
+    Route::get('/bug', [DeveloperDashboardController::class, 'bugIndex'])->name('bug.index');
+    Route::post('/bug', [DeveloperDashboardController::class, 'bugStore'])->name('bug.store');
+    Route::put('/bug/{id}/resolve', [DeveloperDashboardController::class, 'bugResolve'])->name('bug.resolve');
+    Route::delete('/bug/{id}', [DeveloperDashboardController::class, 'bugDestroy'])->name('bug.destroy');
+    
+    // Log Aktivitas
+    Route::get('/log', [DeveloperDashboardController::class, 'logIndex'])->name('log.index');
+    
+    // Kelola Pengguna (Role)
+    Route::get('/users', [DeveloperDashboardController::class, 'usersIndex'])->name('users.index');
+    Route::put('/users/{id}/role', [DeveloperDashboardController::class, 'usersUpdateRole'])->name('users.update-role');
 });
 
 Route::middleware(['auth', 'role:user'])->prefix('user')->name('user.')->group(function () {

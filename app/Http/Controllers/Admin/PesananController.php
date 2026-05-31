@@ -45,6 +45,8 @@ class PesananController extends Controller
 
         $pesanan->update(['status' => $validated['status']]);
 
+        \App\Models\ActivityLog::record("Mengubah status pesanan #{$pesanan->id_transaksi} menjadi: {$validated['status']}");
+
         return redirect()
             ->route('admin.pesanan.show', $pesanan)
             ->with('success', 'Status pesanan berhasil diperbarui.');
