@@ -10,21 +10,25 @@
            class="nav-link {{ request()->routeIs('developer.dashboard') ? 'active' : '' }}">
             <i class="bi bi-speedometer2 me-2"></i> Dashboard
         </a>
-        <a href="{{ route('developer.dashboard') }}#monitoring"
-           class="nav-link">
+        <a href="{{ route('developer.monitoring') }}"
+           class="nav-link {{ request()->routeIs('developer.monitoring') ? 'active' : '' }}">
             <i class="bi bi-activity me-2"></i> Monitoring Sistem
         </a>
-        <a href="#" class="nav-link disabled" tabindex="-1">
+        <a href="{{ route('developer.versi.index') }}"
+           class="nav-link {{ request()->routeIs('developer.versi.*') ? 'active' : '' }}">
             <i class="bi bi-tags me-2"></i> Kelola Versi
         </a>
-        <a href="#" class="nav-link disabled" tabindex="-1">
+        <a href="{{ route('developer.bug.index') }}"
+           class="nav-link {{ request()->routeIs('developer.bug.*') ? 'active' : '' }}">
             <i class="bi bi-bug me-2"></i> Bug Report
         </a>
-        <a href="#" class="nav-link disabled" tabindex="-1">
-            <i class="bi bi-journal-text me-2"></i> Log Aktivitas
+        <a href="{{ route('developer.users.index') }}"
+           class="nav-link {{ request()->routeIs('developer.users.*') ? 'active' : '' }}">
+            <i class="bi bi-people me-2"></i> Kelola Pengguna
         </a>
-        <a href="#" class="nav-link disabled" tabindex="-1">
-            <i class="bi bi-person me-2"></i> Profil
+        <a href="{{ route('developer.log.index') }}"
+           class="nav-link {{ request()->routeIs('developer.log.index') ? 'active' : '' }}">
+            <i class="bi bi-journal-text me-2"></i> Log Aktivitas
         </a>
     </nav>
     <div class="p-3 border-top border-secondary">

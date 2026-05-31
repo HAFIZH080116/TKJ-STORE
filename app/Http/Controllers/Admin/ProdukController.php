@@ -37,7 +37,9 @@ class ProdukController extends Controller
             $validated['gambar'] = $request->file('gambar')->store('produk', 'public');
         }
 
-        Produk::create($validated);
+        $produk = Produk::create($validated);
+
+        \App\Models\ActivityLog::record("Menambahkan produk baru: {$produk->nama_produk}");
 
         return redirect()
             ->route('admin.produk.index')
@@ -65,6 +67,8 @@ class ProdukController extends Controller
 
         $produk->update($validated);
 
+        \App\Models\ActivityLog::record("Memperbarui detail produk: {$produk->nama_produk}");
+
         return redirect()
             ->route('admin.produk.index')
             ->with('success', 'Produk berhasil diperbarui.');
@@ -78,8 +82,11 @@ class ProdukController extends Controller
                 ->with('error', 'Produk tidak dapat dihapus karena sudah digunakan dalam transaksi.');
         }
 
+        $namaProduk = $produk->nama_produk;
         $this->deleteGambar($produk->gambar);
         $produk->delete();
+
+        \App\Models\ActivityLog::record("Menghapus produk: {$namaProduk}");
 
         return redirect()
             ->route('admin.produk.index')
