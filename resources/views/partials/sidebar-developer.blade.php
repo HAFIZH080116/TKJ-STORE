@@ -1,7 +1,8 @@
 <aside class="sidebar d-flex flex-column" id="sidebar">
     <div class="p-3 border-bottom border-secondary">
-        <a href="{{ route('developer.dashboard') }}" class="text-info text-decoration-none fw-bold">
-            <i class="bi bi-code-slash me-2"></i>{{ config('app.name') }}
+        <a href="{{ route('developer.dashboard') }}" class="text-info text-decoration-none fw-bold d-flex align-items-center">
+            <img src="{{ asset('favicon.svg') }}" alt="Logo" width="30" height="30" class="d-inline-block align-top me-2">
+            <span>{{ config('app.name') }}</span>
         </a>
         <div class="text-secondary small mt-1">Panel Developer</div>
     </div>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+    <defs>
+        <!-- Gradients -->
+        <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f2fe" />
+            <stop offset="100%" stop-color="#4facfe" />
+        </linearGradient>
+        <linearGradient id="purpleGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#7f00ff" />
+            <stop offset="100%" stop-color="#e100ff" />
+        </linearGradient>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+
+    <!-- Background rounded card -->
+    <rect width="128" height="128" rx="28" fill="#0f172a" />
+    
+    <!-- Outer Orbiting network path -->
+    <circle cx="64" cy="64" r="48" fill="none" stroke="url(#glowGrad)" stroke-width="2" stroke-dasharray="8 6" opacity="0.6" />
+    
+    <!-- Shield/Hexagon Base -->
+    <polygon points="64,22 102,44 102,84 64,106 26,84 26,44" fill="none" stroke="url(#purpleGrad)" stroke-width="3" stroke-linejoin="round" />
+
+    <!-- Connecting network nodes -->
+    <circle cx="64" cy="22" r="5" fill="#e100ff" />
+    <circle cx="102" cy="44" r="5" fill="#00f2fe" />
+    <circle cx="102" cy="84" r="5" fill="#e100ff" />
+    <circle cx="64" cy="106" r="5" fill="#00f2fe" />
+    <circle cx="26" cy="84" r="5" fill="#e100ff" />
+    <circle cx="26" cy="44" r="5" fill="#00f2fe" />
+
+    <!-- Central Tech/Computer/Network Icon (Stylized "T" + Server Nodes) -->
+    <!-- Stylized "T" -->
+    <path d="M 44 48 L 84 48 M 64 48 L 64 85" fill="none" stroke="url(#glowGrad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" />
+    
+    <!-- Server Node lines inside -->
+    <line x1="50" y1="72" x2="78" y2="72" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.9" />
+    <line x1="56" y1="80" x2="72" y2="80" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.9" />
+    
+    <!-- Central CPU core or glowing pulse -->
+    <circle cx="64" cy="48" r="4" fill="#ffffff" filter="url(#glow)" />
+</svg>

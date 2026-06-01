@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm sticky-top">
     <div class="container">
-        <a class="navbar-brand text-primary" href="{{ route('user.home') }}">
-            <i class="bi bi-shop me-1"></i>{{ config('app.name') }}
+        <a class="navbar-brand text-primary d-flex align-items-center" href="{{ route('user.home') }}">
+            <img src="{{ asset('favicon.svg') }}" alt="Logo" width="30" height="30" class="d-inline-block align-top me-2">
+            <span class="fw-bold">{{ config('app.name') }}</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#userNavbar">
             <span class="navbar-toggler-icon"></span>
