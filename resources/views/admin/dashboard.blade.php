@@ -157,11 +157,17 @@
                 scales: {
                     y: {
                         beginAtZero: true,
+                        min: 0,
+                        suggestedMax: 10000000,
                         grid: {
-                            color: 'rgba(0, 0, 0, 0.05)'
+                            color: 'rgba(128, 128, 128, 0.15)'
                         },
                         ticks: {
+                            stepSize: 2000000,
                             callback: function(value) {
+                                if (value >= 1000000) {
+                                    return 'Rp ' + (value / 1000000) + ' Jt';
+                                }
                                 return 'Rp ' + value.toLocaleString('id-ID');
                             }
                         }
