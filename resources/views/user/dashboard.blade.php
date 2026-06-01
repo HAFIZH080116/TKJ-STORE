@@ -3,6 +3,33 @@
 @section('title', 'Home')
 
 @section('content')
+<!-- Notifications Area -->
+@if (!empty($notifications))
+    <div class="mb-4">
+        @foreach ($notifications as $notif)
+            @php
+                $alertClass = $notif['status'] === 'selesai' ? 'success' : 'info';
+                $alertIcon = $notif['status'] === 'selesai' ? 'bi-check-circle-fill text-success' : 'bi-info-circle-fill text-info';
+            @endphp
+            <div class="alert alert-{{ $alertClass }} bg-opacity-10 border border-{{ $alertClass }} shadow-sm d-flex justify-content-between align-items-center p-3 mb-2" role="alert" style="border-radius: 0.75rem;">
+                <div class="d-flex align-items-center gap-3">
+                    <span class="fs-4"><i class="bi {{ $alertIcon }}"></i></span>
+                    <div>
+                        <strong class="text-capitalize text-body">{{ $notif['status'] }}</strong>
+                        <span class="d-block small text-muted">{{ $notif['message'] }}</span>
+                    </div>
+                </div>
+                <form method="POST" action="{{ route('user.notifikasi.baca', $notif['key']) }}" class="mb-0">
+                    @csrf
+                    <button type="submit" class="btn btn-sm btn-link text-decoration-none p-2 text-secondary border-0" title="Tandai Dibaca">
+                        <i class="bi bi-x-lg fs-6"></i>
+                    </button>
+                </form>
+            </div>
+        @endforeach
+    </div>
+@endif
+
 <div class="row g-4 mb-4">
     <div class="col-md-8">
         <div class="card border-0 shadow-sm">
@@ -41,14 +68,14 @@
 <div class="row g-3 mb-5">
     @forelse ($produkTerbaru as $produk)
         <div class="col-6 col-md-4 col-lg-2">
-            <a href="{{ route('user.produk.show', $produk) }}" class="text-decoration-none text-dark">
+            <a href="{{ route('user.produk.show', $produk) }}" class="text-decoration-none text-reset">
                 <div class="card product-card shadow-sm h-100">
                     <div class="card-body text-center p-3">
                         @if ($produk->gambar)
                             <img src="{{ asset('storage/'.$produk->gambar) }}" alt="{{ $produk->nama_produk }}"
                                  class="img-fluid rounded mb-2" style="height:80px;object-fit:cover">
                         @else
-                            <div class="bg-light rounded d-flex align-items-center justify-content-center mb-2"
+                            <div class="bg-body-secondary rounded d-flex align-items-center justify-content-center mb-2"
                                  style="height:80px">
                                 <i class="bi bi-image text-muted fs-3"></i>
                             </div>

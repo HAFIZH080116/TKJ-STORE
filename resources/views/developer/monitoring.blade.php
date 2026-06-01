@@ -14,7 +14,7 @@
     <!-- Server Hardware & OS -->
     <div class="col-lg-6">
         <div class="card border-0 shadow-sm mb-4">
-            <div class="card-header bg-white border-0 py-3">
+            <div class="card-header bg-body-tertiary border-0 py-3">
                 <h6 class="mb-0 fw-bold text-secondary"><i class="bi bi-cpu me-2"></i>Informasi Server & Lingkungan</h6>
             </div>
             <div class="card-body p-0">
@@ -42,7 +42,7 @@
         </div>
 
         <div class="card border-0 shadow-sm">
-            <div class="card-header bg-white border-0 py-3">
+            <div class="card-header bg-body-tertiary border-0 py-3">
                 <h6 class="mb-0 fw-bold text-secondary"><i class="bi bi-hdd-network me-2"></i>Konfigurasi Basis Data</h6>
             </div>
             <div class="card-body p-0">
@@ -75,7 +75,7 @@
     <!-- Memory & PHP Config -->
     <div class="col-lg-6">
         <div class="card border-0 shadow-sm h-100">
-            <div class="card-header bg-white border-0 py-3">
+            <div class="card-header bg-body-tertiary border-0 py-3">
                 <h6 class="mb-0 fw-bold text-secondary"><i class="bi bi-sliders me-2"></i>Alokasi Memori & Konfigurasi PHP (php.ini)</h6>
             </div>
             <div class="card-body p-0">

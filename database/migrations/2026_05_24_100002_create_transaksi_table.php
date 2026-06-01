@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_user');
             $table->dateTime('tanggal_transaksi');
             $table->decimal('total_pembayaran', 15, 2);
-            $table->string('metode_pembayaran', 50);
+            $table->text('metode_pembayaran');
             $table->enum('status', ['pending', 'diproses', 'selesai'])->default('pending');
 
             $table->foreign('id_user')

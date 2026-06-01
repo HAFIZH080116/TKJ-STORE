@@ -10,7 +10,7 @@
                 <img src="{{ asset('storage/'.$produk->gambar) }}" class="card-img-top rounded-top"
                      alt="{{ $produk->nama_produk }}" style="max-height:360px;object-fit:cover">
             @else
-                <div class="bg-light d-flex align-items-center justify-content-center py-5">
+                <div class="bg-body-secondary d-flex align-items-center justify-content-center py-5">
                     <i class="bi bi-image text-muted display-3"></i>
                 </div>
             @endif

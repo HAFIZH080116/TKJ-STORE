@@ -48,7 +48,7 @@
         </table>
     </div>
     @if ($pesanan->hasPages())
-        <div class="card-footer bg-white">{{ $pesanan->links() }}</div>
+        <div class="card-footer bg-body-tertiary">{{ $pesanan->links() }}</div>
     @endif
 </div>
 @endsection

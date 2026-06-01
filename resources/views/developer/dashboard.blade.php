@@ -77,7 +77,7 @@
     <!-- System Health -->
     <div class="col-lg-5">
         <div class="card border-0 shadow-sm h-100">
-            <div class="card-header bg-white border-0 py-3">
+            <div class="card-header bg-body-tertiary border-0 py-3">
                 <h5 class="mb-0 fw-bold"><i class="bi bi-activity me-2 text-info"></i>Kesehatan Sistem</h5>
             </div>
             <div class="card-body">
@@ -113,7 +113,7 @@
     <!-- Recent Logs -->
     <div class="col-lg-7">
         <div class="card border-0 shadow-sm h-100">
-            <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
+            <div class="card-header bg-body-tertiary border-0 py-3 d-flex justify-content-between align-items-center">
                 <h5 class="mb-0 fw-bold"><i class="bi bi-clock-history me-2 text-primary"></i>Log Aktivitas Terbaru</h5>
                 <a href="{{ route('developer.log.index') }}" class="btn btn-sm btn-link text-decoration-none">Lihat Semua</a>
             </div>

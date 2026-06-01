@@ -17,6 +17,25 @@ class ProdukController extends Controller
             $query->where('nama_produk', 'like', '%'.$request->q.'%');
         }
 
+        if ($request->filled('cat')) {
+            $cat = strtolower($request->cat);
+            if ($cat === 'laptop') {
+                $query->where('nama_produk', 'like', '%laptop%');
+            } elseif ($cat === 'periferal') {
+                $query->where(function ($q) {
+                    $q->where('nama_produk', 'like', '%keyboard%')
+                      ->orWhere('nama_produk', 'like', '%mouse%');
+                });
+            } elseif ($cat === 'komponen') {
+                $query->where(function ($q) {
+                    $q->where('nama_produk', 'like', '%ram%')
+                      ->orWhere('nama_produk', 'like', '%ssd%');
+                });
+            } elseif ($cat === 'monitor') {
+                $query->where('nama_produk', 'like', '%monitor%');
+            }
+        }
+
         $produks = $query->orderByDesc('id_produk')->paginate(12)->withQueryString();
 
         return view('user.produk.index', compact('produks'));

@@ -6,8 +6,9 @@
     <title>@yield('title', 'Home') — {{ config('app.name') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    @include('partials.theme-script')
     <style>
-        body { background: #f8fafc; }
+        html[data-bs-theme="light"] body { background: #f8fafc; }
         .navbar-brand { font-weight: 700; }
         .product-card { border: none; border-radius: .75rem; transition: transform .2s; }
         .product-card:hover { transform: translateY(-4px); }
@@ -33,7 +34,7 @@
         @yield('content')
     </main>
 
-    <footer class="text-center text-muted small py-4 border-top bg-white">
+    <footer class="text-center text-muted small py-4 border-top bg-body-tertiary">
         &copy; {{ date('Y') }} {{ config('app.name') }}
     </footer>
 

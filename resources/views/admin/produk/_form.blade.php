@@ -56,7 +56,7 @@
             <small class="text-muted">JPG, PNG, WEBP. Maks. 2MB.</small>
         </div>
         @if ($isEdit && $produk->gambar)
-            <div class="border rounded p-2 bg-light text-center">
+            <div class="border rounded p-2 bg-body-secondary text-center">
                 <img src="{{ asset('storage/'.$produk->gambar) }}" alt="{{ $produk->nama_produk }}"
                      class="img-fluid rounded" style="max-height:180px">
                 <p class="small text-muted mt-2 mb-0">Gambar saat ini</p>

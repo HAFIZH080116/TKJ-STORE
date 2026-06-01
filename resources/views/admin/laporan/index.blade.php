@@ -79,7 +79,7 @@
 <div class="row g-4 mb-4">
     <div class="col-md-4">
         <div class="card shadow-sm border-0 h-100">
-            <div class="card-header bg-white fw-semibold">Statistik Status</div>
+            <div class="card-header bg-body-tertiary fw-semibold">Statistik Status</div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex justify-content-between">
                     <span><span class="badge text-bg-secondary">pending</span></span>
@@ -98,7 +98,7 @@
     </div>
     <div class="col-md-8">
         <div class="card shadow-sm border-0 h-100">
-            <div class="card-header bg-white fw-semibold">Rekap Nominal per Status</div>
+            <div class="card-header bg-body-tertiary fw-semibold">Rekap Nominal per Status</div>
             <div class="table-responsive">
                 <table class="table mb-0">
                     <thead class="table-light">
@@ -128,7 +128,7 @@
 </div>
 
 <div class="card shadow-sm border-0 mb-4">
-    <div class="card-header bg-white fw-semibold">
+    <div class="card-header bg-body-tertiary fw-semibold">
         <i class="bi bi-trophy me-2"></i>Produk Terlaris (Top 10)
     </div>
     <div class="table-responsive">
@@ -160,7 +160,7 @@
 </div>
 
 <div class="card shadow-sm border-0">
-    <div class="card-header bg-white fw-semibold">
+    <div class="card-header bg-body-tertiary fw-semibold">
         <i class="bi bi-table me-2"></i>Rekap Transaksi
     </div>
     <div class="card-body">

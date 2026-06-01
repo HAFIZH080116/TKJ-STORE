@@ -30,7 +30,7 @@
                             <td class="ps-4 font-monospace text-muted small">
                                 #{{ $log->id_log }}
                             </td>
-                            <td class="small fw-bold text-dark py-3">
+                            <td class="small fw-bold text-body py-3">
                                 {{ $log->user?->name ?? 'System' }}
                             </td>
                             <td>
@@ -42,7 +42,7 @@
                                         default => 'secondary',
                                     };
                                 @endphp
-                                <span class="badge text-bg-{{ $badge }} px-2.5 py-1 text-capitalize font-monospace" style="font-size: 0.7rem;">
+                                <span class="badge text-bg-{{ $badge }} px-3 py-1 text-capitalize font-monospace" style="font-size: 0.7rem;">
                                     {{ $log->user?->role ?? 'system' }}
                                 </span>
                             </td>

@@ -51,4 +51,10 @@ class PesananController extends Controller
             ->route('admin.pesanan.show', $pesanan)
             ->with('success', 'Status pesanan berhasil diperbarui.');
     }
+
+    public function invoice(Transaksi $pesanan): View
+    {
+        $pesanan->load(['user', 'detailTransaksi.produk']);
+        return view('admin.pesanan.invoice', compact('pesanan'));
+    }
 }

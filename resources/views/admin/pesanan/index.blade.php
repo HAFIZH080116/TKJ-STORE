@@ -67,6 +67,6 @@
             </tbody>
         </table>
     </div>
-    <div class="card-footer bg-white">{{ $pesanan->links() }}</div>
+    <div class="card-footer bg-body-tertiary">{{ $pesanan->links() }}</div>
 </div>
 @endsection

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm sticky-top">
     <div class="container">
         <a class="navbar-brand text-primary" href="{{ route('user.home') }}">
             <i class="bi bi-shop me-1"></i>{{ config('app.name') }}
@@ -31,6 +31,9 @@
                 </li>
 
             </ul>
+            <button class="btn btn-sm rounded-circle border-0 d-flex align-items-center justify-content-center p-2 me-3 bg-body-secondary" id="themeToggle" type="button" title="Ganti Tema">
+                <i class="bi bi-moon-stars-fill text-secondary"></i>
+            </button>
             <form method="POST" action="{{ route('logout') }}" class="d-flex">
                 @csrf
                 <button type="submit" class="btn btn-outline-danger btn-sm">
