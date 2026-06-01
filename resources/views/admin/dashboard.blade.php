@@ -60,8 +60,19 @@
     </div>
 </div>
 
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-header bg-body-tertiary">
+        <h5 class="mb-0 fw-bold"><i class="bi bi-graph-up-arrow me-2 text-primary"></i>Grafik Pendapatan (7 Hari Terakhir)</h5>
+    </div>
+    <div class="card-body">
+        <div style="height: 240px; position: relative;">
+            <canvas id="salesChart"></canvas>
+        </div>
+    </div>
+</div>
+
 <div class="card shadow-sm border-0">
-    <div class="card-header bg-white">
+    <div class="card-header bg-body-tertiary">
         <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i>Pesanan Terbaru</h5>
     </div>
     <div class="card-body p-0">
@@ -105,3 +116,62 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {!! json_encode($salesLabels) !!},
+                datasets: [{
+                    label: 'Pendapatan',
+                    data: {!! json_encode($salesData) !!},
+                    borderColor: '#0d6efd',
+                    backgroundColor: 'rgba(13, 110, 253, 0.05)',
+                    tension: 0.35,
+                    fill: true,
+                    borderWidth: 3,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                    pointBackgroundColor: '#0d6efd',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return ' Pendapatan: Rp ' + context.raw.toLocaleString('id-ID');
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return 'Rp ' + value.toLocaleString('id-ID');
+                            }
+                        }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+    });
+</script>
+@endpush

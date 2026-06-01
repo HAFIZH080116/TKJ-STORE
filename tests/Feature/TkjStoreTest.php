@@ -144,7 +144,14 @@ class TkjStoreTest extends TestCase
 
         // Process Checkout
         $response = $this->post(route('user.checkout.proses'), [
-            'metode_pembayaran' => 'Transfer Bank',
+            'metode_pembayaran' => 'BCA Virtual Account',
+            'nama_penerima' => 'User TKJ',
+            'telepon_penerima' => '081234567892',
+            'kurir' => 'JNE Express',
+            'layanan' => 'Reguler',
+            'alamat_lengkap' => 'Jl. Sudirman No. 20',
+            'catatan' => 'Taruh teras',
+            'ongkir' => 15000,
         ]);
 
         // Check if redirected to order success/show page
@@ -153,8 +160,8 @@ class TkjStoreTest extends TestCase
         // Check database
         $this->assertDatabaseHas('transaksi', [
             'id_user' => $this->user->id_user,
-            'total_pembayaran' => 600000.00,
-            'metode_pembayaran' => 'Transfer Bank',
+            'total_pembayaran' => 615000.00,
+            'metode_pembayaran' => 'BCA Virtual Account | JNE Express - Reguler (Penerima: User TKJ, Telp: 081234567892, Alamat: Jl. Sudirman No. 20, Catatan: Taruh teras)',
             'status' => 'pending',
         ]);
 
@@ -247,5 +254,39 @@ class TkjStoreTest extends TestCase
             'id_user' => $this->user->id_user,
             'role' => 'admin',
         ]);
+    }
+
+    public function test_user_order_status_notifications(): void
+    {
+        $this->actingAs($this->user);
+
+        // 1. Initially, no notifications for pending status
+        $transaksi = \App\Models\Transaksi::create([
+            'id_user' => $this->user->id_user,
+            'tanggal_transaksi' => now(),
+            'total_pembayaran' => 200000.00,
+            'metode_pembayaran' => 'COD',
+            'status' => 'pending',
+        ]);
+
+        $response = $this->get(route('user.home'));
+        $response->assertStatus(200);
+        $response->assertDontSee('sedang diproses kurir ekspedisi!');
+
+        // 2. Status updated to diproses by admin
+        $transaksi->update(['status' => 'diproses']);
+
+        $response = $this->get(route('user.home'));
+        $response->assertStatus(200);
+        $response->assertSee('sedang diproses kurir ekspedisi!');
+
+        // 3. Dismiss notification
+        $key = $transaksi->id_transaksi . '_diproses';
+        $response = $this->post(route('user.notifikasi.baca', $key));
+        $response->assertRedirect();
+
+        // 4. Notification disappeared
+        $response = $this->get(route('user.home'));
+        $response->assertDontSee('sedang diproses kurir ekspedisi!');
     }
 }

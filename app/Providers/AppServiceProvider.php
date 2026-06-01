@@ -21,8 +21,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        \Illuminate\Pagination\Paginator::useBootstrapFive();
+
         View::composer('partials.navbar-user', function ($view) {
             $view->with('cartQty', app(CartService::class)->totalQuantity());
+        });
+
+        View::composer('partials.sidebar-admin', function ($view) {
+            $view->with('pendingOrdersCount', \App\Models\Transaksi::where('status', 'pending')->count());
         });
     }
 }

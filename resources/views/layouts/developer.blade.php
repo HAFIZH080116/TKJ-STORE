@@ -6,9 +6,11 @@
     <title>@yield('title', 'Dashboard') — Developer | {{ config('app.name') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    @include('partials.theme-script')
     <style>
         :root { --sidebar-width: 260px; --sidebar-bg: #0f172a; }
-        body { min-height: 100vh; background: #f8fafc; }
+        body { min-height: 100vh; }
+        html[data-bs-theme="light"] body { background: #f8fafc; }
         .sidebar {
             width: var(--sidebar-width);
             min-height: 100vh;

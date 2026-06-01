@@ -33,6 +33,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('produk', ProdukController::class);
     Route::get('pesanan', [AdminPesananController::class, 'index'])->name('pesanan.index');
     Route::get('pesanan/{pesanan}', [AdminPesananController::class, 'show'])->name('pesanan.show');
+    Route::get('pesanan/{pesanan}/invoice', [AdminPesananController::class, 'invoice'])->name('pesanan.invoice');
     Route::put('pesanan/{pesanan}/status', [AdminPesananController::class, 'updateStatus'])->name('pesanan.update-status');
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
 });
@@ -62,6 +63,7 @@ Route::middleware(['auth', 'role:developer'])->prefix('developer')->name('develo
 
 Route::middleware(['auth', 'role:user'])->prefix('user')->name('user.')->group(function () {
     Route::get('/', [UserDashboardController::class, 'index'])->name('home');
+    Route::post('/notifikasi/{key}/baca', [UserDashboardController::class, 'bacaNotifikasi'])->name('notifikasi.baca');
     Route::get('/produk', [UserProdukController::class, 'index'])->name('produk.index');
     Route::get('/produk/{produk}', [UserProdukController::class, 'show'])->name('produk.show');
     Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang.index');
@@ -72,4 +74,5 @@ Route::middleware(['auth', 'role:user'])->prefix('user')->name('user.')->group(f
     Route::post('/checkout', [CheckoutController::class, 'proses'])->name('checkout.proses');
     Route::get('/pesanan', [UserPesananController::class, 'index'])->name('pesanan.index');
     Route::get('/pesanan/{pesanan}', [UserPesananController::class, 'show'])->name('pesanan.show');
+    Route::get('/pesanan/{pesanan}/invoice', [UserPesananController::class, 'invoice'])->name('pesanan.invoice');
 });

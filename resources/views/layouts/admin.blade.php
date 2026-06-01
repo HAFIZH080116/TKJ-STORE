@@ -6,9 +6,11 @@
     <title>@yield('title', 'Dashboard') — Admin | {{ config('app.name') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    @include('partials.theme-script')
     <style>
         :root { --sidebar-width: 260px; --sidebar-bg: #1e293b; }
-        body { min-height: 100vh; background: #f1f5f9; }
+        body { min-height: 100vh; }
+        html[data-bs-theme="light"] body { background: #f1f5f9; }
         .sidebar {
             width: var(--sidebar-width);
             min-height: 100vh;
@@ -34,6 +36,13 @@
             .main-content { margin-left: 0; }
         }
         .stat-card { border: none; border-radius: .75rem; }
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .5; transform: scale(0.92); }
+        }
     </style>
     @stack('styles')
 </head>

@@ -16,8 +16,13 @@
         </a>
 
         <a href="{{ route('admin.pesanan.index') }}"
-           class="nav-link {{ request()->routeIs('admin.pesanan.*') ? 'active' : '' }}">
-            <i class="bi bi-receipt me-2"></i> Kelola Pesanan
+           class="nav-link {{ request()->routeIs('admin.pesanan.*') ? 'active' : '' }} d-flex justify-content-between align-items-center">
+            <span><i class="bi bi-receipt me-2"></i> Kelola Pesanan</span>
+            @if (($pendingOrdersCount ?? 0) > 0)
+                <span class="badge rounded-pill bg-danger border border-light animate-pulse px-2 py-1" style="font-size: 0.75rem;">
+                    {{ $pendingOrdersCount }}
+                </span>
+            @endif
         </a>
         <a href="{{ route('admin.laporan.index') }}"
            class="nav-link {{ request()->routeIs('admin.laporan.*') ? 'active' : '' }}">

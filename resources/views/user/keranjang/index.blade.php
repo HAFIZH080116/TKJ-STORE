@@ -45,10 +45,14 @@
                             @foreach ($items as $item)
                                 <tr>
                                     <td>
-                                        <div class="d-flex align-items-center gap-2">
+                                        <div class="d-flex align-items-center gap-3">
                                             @if ($item['gambar'])
                                                 <img src="{{ asset('storage/'.$item['gambar']) }}" width="48" height="48"
-                                                     class="rounded" style="object-fit:cover" alt="">
+                                                     class="rounded object-fit-cover" alt="{{ $item['nama_produk'] }}">
+                                            @else
+                                                <div class="bg-body-secondary rounded d-flex align-items-center justify-content-center" style="width:48px;height:48px">
+                                                    <i class="bi bi-image text-muted"></i>
+                                                </div>
                                             @endif
                                             <div>
                                                 <div class="fw-semibold">{{ $item['nama_produk'] }}</div>

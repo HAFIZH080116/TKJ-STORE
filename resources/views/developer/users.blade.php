@@ -48,7 +48,7 @@
                     @forelse ($users as $u)
                         <tr>
                             <td class="ps-4 text-muted small">#{{ $u->id_user }}</td>
-                            <td class="small fw-bold text-dark py-3">
+                            <td class="small fw-bold text-body py-3">
                                 {{ $u->name }}
                                 @if (auth()->id() === $u->id_user)
                                     <span class="badge text-bg-primary px-2 ms-1" style="font-size: 0.6rem;">Anda</span>
@@ -66,7 +66,7 @@
                                         default => 'secondary',
                                     };
                                 @endphp
-                                <span class="badge text-bg-{{ $badge }} px-2.5 py-1 text-capitalize font-monospace" style="font-size: 0.7rem;">
+                                <span class="badge text-bg-{{ $badge }} px-3 py-1 text-capitalize font-monospace" style="font-size: 0.7rem;">
                                     {{ $u->role }}
                                 </span>
                             </td>

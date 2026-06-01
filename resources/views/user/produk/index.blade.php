@@ -15,6 +15,16 @@
     </form>
 </div>
 
+<div class="mb-4">
+    <div class="nav nav-pills gap-2">
+        <a href="{{ route('user.produk.index') }}" class="nav-link {{ !request('cat') ? 'active' : 'bg-body text-secondary border' }} btn-sm rounded-pill px-3">Semua</a>
+        <a href="{{ route('user.produk.index', ['cat' => 'laptop']) }}" class="nav-link {{ request('cat') === 'laptop' ? 'active' : 'bg-body text-secondary border' }} btn-sm rounded-pill px-3">Laptop</a>
+        <a href="{{ route('user.produk.index', ['cat' => 'periferal']) }}" class="nav-link {{ request('cat') === 'periferal' ? 'active' : 'bg-body text-secondary border' }} btn-sm rounded-pill px-3">Periferal</a>
+        <a href="{{ route('user.produk.index', ['cat' => 'komponen']) }}" class="nav-link {{ request('cat') === 'komponen' ? 'active' : 'bg-body text-secondary border' }} btn-sm rounded-pill px-3">Komponen</a>
+        <a href="{{ route('user.produk.index', ['cat' => 'monitor']) }}" class="nav-link {{ request('cat') === 'monitor' ? 'active' : 'bg-body text-secondary border' }} btn-sm rounded-pill px-3">Monitor</a>
+    </div>
+</div>
+
 @if (session('success'))
     <div class="alert alert-success alert-dismissible fade show">
         {{ session('success') }}
@@ -36,7 +46,7 @@
                     <img src="{{ asset('storage/'.$produk->gambar) }}" class="card-img-top" alt="{{ $produk->nama_produk }}"
                          style="height:160px;object-fit:cover">
                 @else
-                    <div class="bg-light d-flex align-items-center justify-content-center" style="height:160px">
+                    <div class="bg-body-secondary d-flex align-items-center justify-content-center" style="height:160px">
                         <i class="bi bi-image text-muted fs-1"></i>
                     </div>
                 @endif

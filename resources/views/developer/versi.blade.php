@@ -105,7 +105,7 @@
                         <textarea name="deskripsi" id="deskripsi" rows="5" class="form-control" placeholder="Tuliskan detail pembaruan sistem..." required></textarea>
                     </div>
                 </div>
-                <div class="modal-footer border-0 p-3 bg-light">
+                <div class="modal-footer border-0 p-3 bg-body-secondary">
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-primary btn-sm px-4">Simpan Rilis</button>
                 </div>

@@ -50,7 +50,7 @@
                                     {{ $bug->status === 'resolved' ? 'Resolved' : 'Open' }}
                                 </span>
                             </td>
-                            <td class="small fw-bold text-dark py-3" style="max-width: 200px;">
+                            <td class="small fw-bold text-body py-3" style="max-width: 200px;">
                                 {{ $bug->judul }}
                             </td>
                             <td class="small text-muted py-3" style="max-width: 400px;">
@@ -116,7 +116,7 @@
                         <textarea name="deskripsi" id="deskripsi" rows="5" class="form-control" placeholder="Jelaskan secara rinci detail error, langkah reproduksi, atau pesan kegagalan sistem..." required></textarea>
                     </div>
                 </div>
-                <div class="modal-footer border-0 p-3 bg-light">
+                <div class="modal-footer border-0 p-3 bg-body-secondary">
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-warning text-white fw-semibold btn-sm px-4">Kirim Laporan</button>
                 </div>

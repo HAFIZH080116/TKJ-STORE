@@ -12,6 +12,21 @@ class DashboardController extends Controller
 {
     public function index(): View
     {
+        $salesData = [];
+        $salesLabels = [];
+        
+        for ($i = 6; $i >= 0; $i--) {
+            $date = now()->subDays($i)->format('Y-m-d');
+            $label = now()->subDays($i)->format('d M');
+            
+            $revenue = Transaksi::where('status', 'selesai')
+                ->whereDate('tanggal_transaksi', $date)
+                ->sum('total_pembayaran');
+                
+            $salesData[] = (float) $revenue;
+            $salesLabels[] = $label;
+        }
+
         return view('admin.dashboard', [
             'totalProduk' => Produk::count(),
             'totalUser' => User::count(),
@@ -21,6 +36,8 @@ class DashboardController extends Controller
                 ->orderByDesc('tanggal_transaksi')
                 ->limit(5)
                 ->get(),
+            'salesData' => $salesData,
+            'salesLabels' => $salesLabels,
         ]);
     }
 }

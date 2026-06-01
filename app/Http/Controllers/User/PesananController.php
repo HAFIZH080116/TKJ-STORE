@@ -26,4 +26,11 @@ class PesananController extends Controller
 
         return view('user.pesanan.show', compact('pesanan'));
     }
+
+    public function invoice(Transaksi $pesanan): View
+    {
+        abort_unless($pesanan->id_user === Auth::id(), 403);
+        $pesanan->load(['detailTransaksi.produk']);
+        return view('admin.pesanan.invoice', compact('pesanan'));
+    }
 }

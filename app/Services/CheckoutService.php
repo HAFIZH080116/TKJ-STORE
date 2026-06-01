@@ -14,7 +14,7 @@ class CheckoutService
     {
     }
 
-    public function process(string $metodePembayaran): array
+    public function process(string $metodePembayaran, float $ongkir = 0): array
     {
         if ($this->cart->isEmpty()) {
             return ['error' => 'Keranjang masih kosong.'];
@@ -23,8 +23,8 @@ class CheckoutService
         $items = $this->cart->items();
 
         try {
-            $transaksi = DB::transaction(function () use ($items, $metodePembayaran) {
-                $total = 0;
+            $transaksi = DB::transaction(function () use ($items, $metodePembayaran, $ongkir) {
+                $total = $ongkir;
 
                 foreach ($items as $item) {
                     $produk = Produk::lockForUpdate()->find($item['id_produk']);

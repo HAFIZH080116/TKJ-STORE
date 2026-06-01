@@ -12,7 +12,7 @@
                     <img src="{{ asset('storage/'.$produk->gambar) }}" alt="{{ $produk->nama_produk }}"
                          class="img-fluid rounded mb-3" style="max-height:280px;object-fit:cover">
                 @else
-                    <div class="bg-light rounded py-5 mb-3">
+                    <div class="bg-body-secondary rounded py-5 mb-3">
                         <i class="bi bi-image text-muted display-4"></i>
                     </div>
                 @endif
